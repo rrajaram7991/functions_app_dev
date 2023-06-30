@@ -17,7 +17,7 @@ steps:
 - task: AzureFunctionApp@1
   displayName: 'Deploy to Function App'
   inputs:
-    azureSubscription: 'azure_conn'  # Azure Resource Manager service connection name
+    azureSubscription: 'azure_conn_rm'  # Azure Resource Manager service connection name
     appType: 'functionApp'
     appName: 'Azure-func-app-1'  # Name of the Function App in Azure
     package: '$(Build.ArtifactStagingDirectory)/functionapp.zip'
