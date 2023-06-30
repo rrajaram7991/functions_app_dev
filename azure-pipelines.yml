@@ -1,0 +1,23 @@
+trigger:
+  branches:
+    include:
+      - main
+
+steps:
+- checkout: self
+
+- task: ArchiveFiles@2
+  displayName: 'Archive repository'
+  inputs:
+    rootFolderOrFile: '$(System.DefaultWorkingDirectory)'
+    includeRootFolder: false
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/functionapp.zip'
+
+- task: AzureFunctionApp@1
+  displayName: 'Deploy to Function App'
+  inputs:
+    azureSubscription: 'Azure subscription 1'  # Azure Resource Manager service connection name
+    appType: 'functionApp'
+    appName: 'Azure-func-app-1'  # Name of the Function App in Azure
+    package: '$(Build.ArtifactStagingDirectory)/functionapp.zip'
