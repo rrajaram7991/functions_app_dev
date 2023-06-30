@@ -1,0 +1,12 @@
+{
+  "scriptFile": "__init__.py",
+  "bindings": [
+    {
+      "name": "msg",
+      "type": "queueTrigger",
+      "direction": "in",
+      "queueName": "queue-demo-1",
+      "connection": "azuredemosa1_STORAGE"
+    }
+  ]
+}
